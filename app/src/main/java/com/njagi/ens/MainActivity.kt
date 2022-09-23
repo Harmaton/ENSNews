@@ -1,6 +1,7 @@
 package com.njagi.ens.feature_presentation.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.njagi.ens.feature_presentation.onboarding_view.OnboardingScreen
 import com.njagi.ens.ui.theme.ENSTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,22 +24,27 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    OnboardingScreen(onGettingStartedClick = {onGettingStartedClick()}, onSkipClicked = {skipClick()}  )
+
+
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+    private fun skipClick() {
+
+    }
+
+    private fun onGettingStartedClick() {
+
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ENSTheme {
-        Greeting("Android")
+
     }
 }
