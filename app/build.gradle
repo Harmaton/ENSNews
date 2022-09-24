@@ -82,6 +82,16 @@ dependencies {
     implementation "com.google.accompanist:accompanist-pager-indicators:0.19.0"
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.26.4-beta"
 
+    //coil image library
+    implementation("io.coil-kt:coil-compose:2.2.0")
+
+    //network
+    implementation'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    //Gson Converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
 
 
