@@ -12,17 +12,17 @@ sealed class Page(
 
     object First : Page(
         "Your Source of Truth",
-        "Discover developing news and trends from all over the World",
+        "Discover developing news from all over the World",
         R.drawable.ic_launcher_background
     )
     object Second:  Page(
             "Curated News",
-            "We bring to smart recommendations",
+            "We bring to you categorised smart recommendations ",
             R.drawable.ic_launcher_foreground
         )
      object Third: Page(
             "You get to be the first person to see",
-            "Over 1M+ news daily ",
+            "Explore Over 1M+ news daily",
             R.drawable.ic_launcher_foreground
         )
 }

@@ -1,4 +1,8 @@
 package com.njagi.ens.feature_presentation.settings_view
 
-class SettingsScreen {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun SettingsScreen() {
+
 }

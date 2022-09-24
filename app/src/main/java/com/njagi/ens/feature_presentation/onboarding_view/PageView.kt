@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,29 +25,43 @@ import com.njagi.ens.ui.theme.ENSTheme
 fun PageView(page: Page) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize().padding(5.dp)
     ) {
         Image(
-            painter = painterResource(id = page.image), contentDescription = "", modifier = Modifier
-                .fillMaxHeight(0.7f)
-                .fillMaxWidth(0.6f)
-                .padding(2.dp)
-        )
-
-
-        Text(
-            text = page.title, fontSize = 35.sp, fontWeight = FontWeight.Bold,
+            painter = painterResource(id = page.image), contentDescription = "",
             modifier = Modifier
-                .fillMaxSize()
-                .padding(30.dp),
-            color = Color.Green,
-            textAlign = TextAlign.Center
+                .fillMaxHeight(0.5f)
+                .fillMaxWidth()
         )
+        Row(horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(15.dp)
+        ){
+            Text(
+                text = page.title, fontSize = 35.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp),
+                color = Color.Green,
+                textAlign = TextAlign.Center
+            )
+        }
+
+         Row(horizontalArrangement = Arrangement.End,
+             verticalAlignment = Alignment.CenterVertically,
+              modifier = Modifier.padding(15.dp)
+             ) {
+             Text(text = page.description, fontSize = 20.sp,
+                 fontWeight = FontWeight.Normal,
+                 modifier = Modifier
+                     .fillMaxWidth()
+                     .padding(2.dp),
+                 maxLines = 2
+             )
+         }
     }
-    Spacer(modifier = Modifier.padding(20.dp))
-
-    Text(text = page.description, fontSize = 15.sp, fontWeight = FontWeight.Normal)
-
 }
 
 @OptIn(ExperimentalPagerApi::class)
@@ -66,10 +81,24 @@ fun FinishButton(modifier: Modifier,pagerState: PagerState, onClick:()-> Unit) {
    }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun PageviewPreview() {
     ENSTheme() {
         PageView(page = Page.First)
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun PageviewPreview2() {
+    ENSTheme() {
+        PageView(page = Page.Second)
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun PageviewPreview3() {
+    ENSTheme() {
+        PageView(page = Page.Third)
     }
 }

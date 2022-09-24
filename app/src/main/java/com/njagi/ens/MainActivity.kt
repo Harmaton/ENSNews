@@ -1,48 +1,42 @@
 package com.njagi.ens
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.njagi.ens.feature_presentation.onboarding_view.OnboardingScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import com.njagi.ens.feature_presentation.onboarding_view.SplashViewModel
+import com.njagi.ens.navigation.NavGraph
 import com.njagi.ens.ui.theme.ENSTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var splashViewModel: SplashViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        installSplashScreen().setKeepOnScreenCondition(){
+            !splashViewModel.isloading.value
+        }
+
         setContent {
             ENSTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    OnboardingScreen(
-                        onGettingStartedClick = { onGettingStartedClick() },
-                        onSkipClicked = { skipClick() })
+                   val screen by splashViewModel.startDestination
+                   val navcontroller = rememberNavController()
+                    NavGraph(navController = navcontroller, startdestination = screen)
 
-
-                }
             }
         }
     }
 
-    private fun skipClick() {
-
-    }
-
-    private fun onGettingStartedClick() {
-
-    }
 }
 
 @Preview(showBackground = true)
