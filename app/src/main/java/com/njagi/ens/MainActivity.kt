@@ -1,4 +1,4 @@
-package com.njagi.ens.feature_presentation.main
+package com.njagi.ens
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.njagi.ens.feature_presentation.onboarding_view.OnboardingScreen
 import com.njagi.ens.ui.theme.ENSTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    OnboardingScreen(onGettingStartedClick = {onGettingStartedClick()}, onSkipClicked = {skipClick()}  )
+                    OnboardingScreen(
+                        onGettingStartedClick = { onGettingStartedClick() },
+                        onSkipClicked = { skipClick() })
 
 
                 }

@@ -1,7 +1,7 @@
-package com.njagi.ens.feature_presentation.main
+package com.njagi.ens
 
+import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class ENSApp {
-}
+class ENSApp : Application()
