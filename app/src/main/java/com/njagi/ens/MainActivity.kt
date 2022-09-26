@@ -33,6 +33,7 @@ class MainActivity : ComponentActivity() {
                    val navcontroller = rememberNavController()
                     NavGraph(navController = navcontroller, startdestination = screen)
 
+
             }
         }
     }
